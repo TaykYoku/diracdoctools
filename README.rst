@@ -1,4 +1,4 @@
-How to build DIRAC documentation.
+How to build DIRAC documentation
 ================================
 
 1. Create DIRAC client environment by an appropriate::
