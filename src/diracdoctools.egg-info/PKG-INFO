@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: diracdoctools
-Version: 0.1.dev1+g418d341.d20210814
+Version: 1.0.1.dev0+g4dad01f.d20210814
 Summary: Build DIRAC documentation.
 Home-page: https://github.com/TaykYoku/diracdoctools/
 License: GPL-3.0-only

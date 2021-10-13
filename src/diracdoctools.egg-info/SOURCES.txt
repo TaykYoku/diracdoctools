@@ -15,7 +15,13 @@ src/diracdoctools.egg-info/entry_points.txt
 src/diracdoctools.egg-info/not-zip-safe
 src/diracdoctools.egg-info/requires.txt
 src/diracdoctools.egg-info/top_level.txt
+src/diracdoctools/CustomizedDocs/CustomDErrno.py
+src/diracdoctools/CustomizedDocs/CustomTransformation.py
 src/diracdoctools/cmd/__init__.py
 src/diracdoctools/cmd/codeReference.py
 src/diracdoctools/cmd/commandReference.py
 src/diracdoctools/cmd/concatcfg.py
+src/diracdoctools/scripts/dirac-docs-build-code.py
+src/diracdoctools/scripts/dirac-docs-build-commands.py
+src/diracdoctools/scripts/dirac-docs-concatenate-diraccfg.py
+src/diracdoctools/scripts/dirac-docs-get-release-notes.py
