@@ -26,11 +26,11 @@ jobs:
           TAG_NAME=${GITHUB_REF##*/}
           NEW_STYLE=$(python -c "import diraccfg; major, minor, patch, pre = diraccfg.parseVersion('${TAG_NAME}'); print(f'{major}.{minor}.{patch}', f'a{pre}' if pre else '', sep='')")
           echo "Converted ${TAG_NAME} version to ${NEW_STYLE}"
+          git rev-parse HEAD
       - uses: softprops/action-gh-release@v0.1.13
         with:
           body_path: WebAppDIRACRepo/release.notes
           tag_name: "v${NEW_STYLE}"
-          git rev-parse HEAD
       # Need to do this after creating the PEP-440 style tag
       - name: Build distributions
         run: |
