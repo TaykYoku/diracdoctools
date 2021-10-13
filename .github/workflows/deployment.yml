@@ -33,7 +33,7 @@ jobs:
           body_path: release.notes
           tag_name: steps.PEP-440.outputs.tag_name
       # Need to do this after creating the PEP-440 style tag
-      - name: Build distributions
+      - name: Build distributions for ${{ steps.PEP-440.outputs.tag_name }}
         run: |
           git fetch --all --tags
           python -m build
