@@ -7,8 +7,8 @@ on:
   pull_request:
 
 jobs:
-  prepare-pypi:
-    name: PyPI prepare
+  deploy-pypi:
+    name: PyPI deployment
     runs-on: "ubuntu-latest"
     if: github.event_name != 'push' || github.repository == 'TaykYoku/diracdoctools'
     steps:
@@ -45,13 +45,8 @@ jobs:
       # Need to do this after creating the PEP-440 style tag
       - name: Build distributions
         run: python -m build ./WebAppDIRACRepo/
-    
-  deploy-pypi:
-    name: PyPI deploy
-    needs: test-pypi
-    if: github.event_name == 'push'
-    steps:
       - name: Publish package on PyPI
+        if: github.event_name == 'push'
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
