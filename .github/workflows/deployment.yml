@@ -21,16 +21,17 @@ jobs:
       - name: Validate README for PyPI
         run: python -m readme_renderer README.rst -o /tmp/README.html
       - name: Make PEP-440 style release on GitHub
+        id: PEP-440
         if: github.event_name == 'push'
         run: |
           TAG_NAME=${GITHUB_REF##*/}
           NEW_STYLE=$(python -c "import diraccfg; major, minor, patch, pre = diraccfg.parseVersion('${TAG_NAME}'); print(f'{major}.{minor}.{patch}', f'a{pre}' if pre else '', sep='')")
           echo "Converted ${TAG_NAME} version to ${NEW_STYLE}"
-          git rev-parse HEAD
+          echo ::set-output name=tag_name::"v$NEW_STYLE"
       - uses: softprops/action-gh-release@v0.1.13
         with:
           body_path: release.notes
-          tag_name: "v${NEW_STYLE}"
+          tag_name: steps.PEP-440.outputs.tag_name
       # Need to do this after creating the PEP-440 style tag
       - name: Build distributions
         run: |
