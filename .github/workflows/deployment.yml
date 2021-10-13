@@ -29,7 +29,7 @@ jobs:
           git rev-parse HEAD
       - uses: softprops/action-gh-release@v0.1.13
         with:
-          body_path: WebAppDIRACRepo/release.notes
+          body_path: release.notes
           tag_name: "v${NEW_STYLE}"
       # Need to do this after creating the PEP-440 style tag
       - name: Build distributions
