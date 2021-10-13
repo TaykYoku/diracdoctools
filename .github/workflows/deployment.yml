@@ -27,11 +27,11 @@ jobs:
           NEW_STYLE=$(python -c "import diraccfg; major, minor, patch, pre = diraccfg.parseVersion('${TAG_NAME}'); print(f'{major}.{minor}.{patch}', f'a{pre}' if pre else '', sep='')")
           echo "Converted ${TAG_NAME} version to ${NEW_STYLE}"
           echo ::set-output name=tag_name::"v$NEW_STYLE"
-      - uses: softprops/action-gh-release@v0.1.13
+      - uses: ncipollo/release-action@v1
         if: github.event_name == 'push'
         with:
-          body_path: release.notes
-          tag_name: ${{ steps.PEP-440.outputs.tag_name }}
+          bodyFile: release.notes
+          tag: ${{ steps.PEP-440.outputs.tag_name }}
       # Need to do this after creating the PEP-440 style tag
       - name: Build distributions for ${{ steps.PEP-440.outputs.tag_name }}
         run: |
